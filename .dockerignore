@@ -1,0 +1,12 @@
+# 忽略 Node.js 依賴模組 (會在容器內重新安裝)
+node_modules
+
+# 忽略 npm 的偵錯日誌
+npm-debug.log
+
+# 忽略爬蟲產生的資料 (避免打包進映像檔)
+data/
+data-staging/
+
+# 忽略作業系統特定的檔案
+.DS_Store

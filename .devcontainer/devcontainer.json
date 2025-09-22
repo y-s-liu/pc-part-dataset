@@ -1,0 +1,28 @@
+{
+	"name": "PC Part Scraper Dev",
+	// 告訴 VS Code 使用專案根目錄的 Dockerfile 來建置環境
+	"build": {
+		"dockerfile": "../Dockerfile"
+	},
+
+	// 將本機的 data-staging 資料夾掛載到容器中，這樣爬取的資料才會儲存在你的電腦上
+	"mounts": [
+		"source=${localWorkspaceFolder}/data-staging,target=/usr/src/app/data-staging,type=bind,consistency=cached"
+	],
+
+	// 容器建立「之後」執行的指令。
+	// 你的 Dockerfile 已經執行過 npm ci，所以這裡可以留空或用於其他初始化設定。
+	// "postCreateCommand": "npm install",
+
+	// 客製化 VS Code 在容器內的設定
+	"customizations": {
+		"vscode": {
+			// 推薦在容器內也安裝的擴充功能
+			"extensions": [
+				"dbaeumer.vscode-eslint", // 程式碼風格檢查
+				"esbenp.prettier-vscode", // 程式碼格式化
+				"ms-azuretools.vscode-docker" // Docker 擴充功能
+			]
+		}
+	}
+}
